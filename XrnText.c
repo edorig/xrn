@@ -105,7 +105,11 @@ Widget TextCreate(
      _KNRDECL(Widget,	parent)
 {
     Widget w;
+#ifdef MOTIF
+    Arg args[4];
+#else
     Arg args[2];
+#endif
     Cardinal num_args = 0;
  
 #ifdef MOTIF
@@ -329,11 +333,15 @@ void TextReplace(w, string, length, left, right)
     char save_char;
 
     set_changed(w);
-
-    save_char = string[length];
-    string[length] = '\0';
-    XmTextReplace(w, left, right, string);
-    string[length] = save_char;
+    /* This causes a segfault when length=0 and right!=left */ 
+    if (length>0) {
+      save_char = string[length];
+      string[length] = '\0';
+      XmTextReplace(w, left, right, string);
+      string[length] = save_char;
+    } else {
+      XmTextReplace(w,left,right,NULL);
+    }; 
 #else
     XawTextBlock b;
     XawTextEditType type;
@@ -699,6 +707,7 @@ void TextRemoveLine(w, position)
     
     if (left != right)
 	TextReplace(w, 0, 0, left, right);
+
 }
 
 

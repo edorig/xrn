@@ -48,11 +48,23 @@
  *
  * Putting it more bluntly, I'd rather not have to deal with questions
  * from users at your site that you are capable of answering.
+ *** This is a highly experimental config, so we don't want gripes ***
  */
 #ifndef GRIPES
-#define GRIPES "bug-xrn@kamens.brookline.ma.us"
+#define GRIPES "spam_yourself@spam_yourself.biz"
 #endif
 
+/*
+Compilation requires to define package version 
+ */
+#define PACKAGE_VERSION 10.11
+
+/* This should be elsewhere, but this is efficient. 
+
+ */
+#define RETSIGTYPE void
+#define HAVE_UNISTD_H 1
+#define STDC_HEADERS 1 
 /*
   If you are installing XRN on a multi-user system, on which it might
   not be safe for users to put their NNTP passwords in their
@@ -221,8 +233,9 @@
  * is a larger community than just the local organization, and when
  * someone posts, they intend for their posting to go to that whole
  * community more often than not.
+ * *** We follow a sensible default ***
  */
-/* #define DISTRIBUTION "local" */
+#define DISTRIBUTION "local"
 
 /*
 
@@ -248,7 +261,7 @@
   that I should be making policy decisions for other sites.
   */
 #ifndef CROSSPOST_PROHIBIT
-#define CROSSPOST_PROHIBIT 0
+#define CROSSPOST_PROHIBIT 5
 #endif
 
 #ifndef CROSSPOST_CONFIRM

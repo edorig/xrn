@@ -128,7 +128,7 @@ static void addFunction(first, newsgroup, status)
     String newsgroup;
     int status;
 {
-    String oldGroup = 0, newGroup = 0;
+    String oldGroup = NULL, newGroup = NULL;
     int oldGroupSize = 0;
     long left, right;
 
@@ -208,7 +208,7 @@ void addQuitFunction(widget, event, string, count)
     TextDisableRedisplay(AddText);
 
     TextSelectAll(AddText);
-    addFunction(False, 0, UNSUBSCRIBE);
+    addFunction(False, NULL, UNSUBSCRIBE);
 
     TextEnableRedisplay(AddText);
 }

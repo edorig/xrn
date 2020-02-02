@@ -35,8 +35,9 @@
  * completely implemented, it probably doesn't work properly, and it's
  * unsupported.  If you want to help finish it, please let me know.
  * Otherwise, you probably shouldn't try to compile it.
+ * *** We are feeling lucky today.... *** 
  */
-/* #define MOTIF */
+#define MOTIF 
 
 /*
  * If you want the program to be called something other than "xrn",
@@ -55,9 +56,13 @@ APPDEFAULTS = XRn
  * What language do you want messages to be in?  Legal values are
  * "english", "german", and "french"; case is significant!
  */
-LANGUAGE= english
+LANGUAGE= english  
 /* LANGUAGE= german */
-/* LANGUAGE= french */
+/* Et nous fetons le Brexit */ 
+/* LANGUAGE= french */  
+
+/* Nous sommes sur Linux */
+#define LINUX_DIST 1
 
 #ifdef BandAidCompiler
 #include BandAidCompiler
@@ -231,7 +236,7 @@ LOCAL_OBJS = avl.o $(CLIENTOBJ) compose.o cursor.o dialogs.o \
        strtok.o mesg_strings.o XrnText.o ngMode.o artMode.o allMode.o \
        addMode.o snapshot.o artstruct.o Buttons.o InfoLine.o ButtonBox.o \
        busyCursor.o varfile.o activecache.o sort.o getdate2.o hash.o \
-       killfile.o InfoDialog.o Frame.o Xmisc.o file_cache.o
+       killfile.o InfoDialog.o Frame.o Xmisc.o file_cache.o rclex.o 
 OBJS = $(LOCAL_OBJS) $(REGEX_OBJS)
 
 all:: mesg_strings.h
