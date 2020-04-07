@@ -57,7 +57,7 @@
 /*
 Compilation requires to define package version 
  */
-#define PACKAGE_VERSION 10.11
+#define PACKAGE_VERSION "10.11"
 
 /* This should be elsewhere, but this is efficient. 
 

@@ -128,7 +128,7 @@ static void addFunction(first, newsgroup, status)
     String newsgroup;
     int status;
 {
-    String oldGroup = NULL, newGroup = NULL;
+    String oldGroup = 0, newGroup = 0;
     int oldGroupSize = 0;
     long left, right;
 
@@ -138,28 +138,26 @@ static void addFunction(first, newsgroup, status)
 
     if (! TextGetSelectedOrCurrentLines(AddText, &left, &right))
 	return;
-
+    /* A single newsgroup gets added */ 
+    
     TextDisableRedisplay(AddText);
 
     while (left < right) {
 	int add_ret, len;
-
 	currentGroup(CurrentMode, AddString, &newGroup, left);
 	if (! *newGroup)
 	    break;
-
 	clearNew(newGroup);
 	if (status == IGNORE)
 	    add_ret = ignoreGroup(newGroup);
 	else if (oldGroup)
 	    add_ret = addToNewsrcAfterGroup(newGroup, oldGroup, status);
-	else if (newsgroup)
+	else if (newsgroup!=NULL)
 	    add_ret = addToNewsrcAfterGroup(newGroup, newsgroup, status);
 	else if (first)
 	    add_ret = addToNewsrcBeginning(newGroup, status);
 	else
 	    add_ret = addToNewsrcEnd(newGroup, status);
-
 	if (add_ret == GOOD_GROUP) {
 	    long new_position = left;
 	    moveCursor(FORWARD, AddString, &new_position);
@@ -235,7 +233,7 @@ void addIgnoreRestFunction(widget, event, string, count)
     TextDisableRedisplay(AddText);
 
     TextSelectAll(AddText);
-    addFunction(False, 0, IGNORE);
+    addFunction(False, NULL, IGNORE);
 
     TextEnableRedisplay(AddText);
 }

@@ -232,7 +232,7 @@ long TextGetLength(w)
     Widget w;
 {
 #ifdef MOTIF
-    return XmTextGetLastPosition(w);
+  return XmTextGetLastPosition(w);
 #else
     String str = TextGetString(w);
     long len = strlen(str);
@@ -451,6 +451,7 @@ Boolean TextGetSelectedLines(w, left, right)
     Widget w;
     long *left, *right;
 {
+  /* This code could fail with addQuit */ 
 #ifdef MOTIF
     XmTextPosition left_ret, right_ret;
     XmTextSource source;
@@ -957,11 +958,10 @@ void TextSelectAll(w)
     long len;
 
     len = TextGetLength(w);
-
     set_changed(w);
 
 #ifdef MOTIF
-    XmTextSetSelection(w, 0, len + 1, XtLastTimestampProcessed(XtDisplay(w)));
+    XmTextSetSelection(w, 0, len, XtLastTimestampProcessed(XtDisplay(w)));
 #else
     XawTextSetSelection(w, (XawTextPosition) 0, (XawTextPosition) (len + 1));
 #endif
