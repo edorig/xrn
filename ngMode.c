@@ -1,7 +1,11 @@
 #include <X11/Intrinsic.h>
 #include <X11/StringDefs.h>
 #include <X11/Xaw/Box.h>
+#ifdef MOTIF
+# include <Xm/PanedW.h>
+#else
 #include <X11/Xaw/Paned.h>
+#endif
 
 #include "config.h"
 #include "ngMode.h"
@@ -1292,10 +1296,16 @@ void displayNewsgroupWidgets()
 {
     if (! NewsgroupFrame) {
 	NewsgroupFrame = XtCreateManagedWidget("ngFrame",
-					       panedWidgetClass,
-					       TopLevel, 0, 0);
+#ifdef MOTIF
+                                         xmPanedWindowWidgetClass,
+#else
 
+					       panedWidgetClass,
+#endif	       
+					       TopLevel, 0, 0);
+#ifndef MOTIF
 	XawPanedSetRefigureMode(NewsgroupFrame, False);
+#endif /* MOTIF */
 
 	setButtonActive(NewsgroupButtonList, "ngPost", PostingAllowed);
 	setButtonActive(NewsgroupButtonList, "ngPostAndMail", PostingAllowed);
@@ -1334,11 +1344,13 @@ void displayNewsgroupWidgets()
 	TextDisableWordWrap(NewsgroupText);
 
 	TopInfoLine = NewsgroupInfoLine;
-
+#ifdef MOTIF
+        XmProcessTraversal(AddFrame, XmTRAVERSE_CURRENT);
+#else
 	XawPanedSetRefigureMode(NewsgroupFrame, True);
 
 	XtSetKeyboardFocus(NewsgroupFrame, NewsgroupText);
-
+#endif
 	XtAddEventHandler(NewsgroupText, StructureNotifyMask, FALSE,
 			  resizeNewsgroupText, NULL);
     }

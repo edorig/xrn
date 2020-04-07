@@ -1,6 +1,10 @@
 #include <X11/Intrinsic.h>
 #include <X11/Xaw/Box.h>
+#ifdef MOTIF
+# include <Xm/PanedW.h>
+#else
 #include <X11/Xaw/Paned.h>
+#endif
 
 #include <assert.h>
 
@@ -3506,11 +3510,16 @@ void displayArticleWidgets()
     if (! ArticleFrame) {
 	Dimension height;
 
-	ArticleFrame = XtCreateManagedWidget("artFrame", panedWidgetClass,
+	ArticleFrame = XtCreateManagedWidget("artFrame",
+	#ifdef MOTIF
+                                         xmPanedWindowWidgetClass,
+        #else				     
+					     panedWidgetClass,
+	#endif 
 					     TopLevel, 0, 0);
-
+#ifndef MOTIF
 	XawPanedSetRefigureMode(ArticleFrame, False);
-
+#endif /* MOTIF */
 	setButtonActive(ArtButtonList, "artPost", PostingAllowed);
 	setButtonActive(ArtButtonList, "artPostAndMail", PostingAllowed);
 	setButtonActive(ArtButtonList, "artKillThread", art_sort_need_threads());
@@ -3580,7 +3589,8 @@ void displayArticleWidgets()
 #undef TOP_INFO_LINE
 #undef BOTTOM_BUTTON_BOX
 #undef BUTTOM_INFO_LINE
-
+	/* How do we allow pane to be resized in Motif ? */
+	/* What are TextSetline etc... doing ? */ 
 	TextSetLineSelections(SubjectText);
 	TextDisableWordWrap(SubjectText);
 	XawPanedAllowResize(TEXT_PANE_CHILD(SubjectText), True);
@@ -3591,12 +3601,14 @@ void displayArticleWidgets()
 
 	TopInfoLine = SubjectInfoLine;
 	BottomInfoLine = ArticleInfoLine;
-
+#ifdef MOTIF
+	XmProcessTraversal(AddFrame, XmTRAVERSE_CURRENT);
+#else
 	XawPanedSetRefigureMode(ArticleFrame, True);
 
 	XtInstallAccelerators(SubjectText, ArticleText);
 	XtSetKeyboardFocus(ArticleFrame, SubjectText);
-
+#endif /* EO: Not sure the event handler is needed with Motif */ 
 	XtAddEventHandler(SubjectText, StructureNotifyMask, FALSE,
 			  resizeSubjectText, NULL);
     }

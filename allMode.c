@@ -1,6 +1,11 @@
 #include <X11/Intrinsic.h>
 #include <X11/Xaw/Box.h>
-#include <X11/Xaw/Paned.h>
+#ifdef MOTIF
+# include <Xm/PanedW.h>
+#else
+# include <X11/Xaw/Paned.h>
+#endif
+/*#include <X11/Xaw/Paned.h> */ 
 
 #include "config.h"
 #include "buttons.h"
@@ -818,11 +823,16 @@ static void resizeAllText(widget, client_data, event,
 void displayAllWidgets()
 {
     if (! AllFrame) {
-	AllFrame = XtCreateManagedWidget("allFrame", panedWidgetClass,
+	AllFrame = XtCreateManagedWidget("allFrame",
+#ifdef MOTIF
+                                         xmPanedWindowWidgetClass,
+#else
+					 panedWidgetClass,
+#endif
 					 TopLevel, 0, 0);
-
+#ifndef MOTIF
 	XawPanedSetRefigureMode(AllFrame, False);
-
+#endif /* MOTIF */
 	setButtonActive(AllButtonList, "allPost", PostingAllowed);
 	setButtonActive(AllButtonList, "allPostAndMail", PostingAllowed);
 	if (app_resources.fullNewsrc)
@@ -857,11 +867,13 @@ void displayAllWidgets()
 	TextDisableWordWrap(AllText);
 
 	TopInfoLine = AllInfoLine;
-
+#ifdef MOTIF
+        XmProcessTraversal(AddFrame, XmTRAVERSE_CURRENT);
+#else
 	XawPanedSetRefigureMode(AllFrame, True);
 
 	XtSetKeyboardFocus(AllFrame, AllText);
-
+#endif /* EO: Not sure the event handler is needed in Motif */ 
 	XtAddEventHandler(AllText, StructureNotifyMask, FALSE,
 			  resizeAllText, NULL);
     }

@@ -1,0 +1,188 @@
+in addMode.c we have 
+if (! AddFrame) {
+        AddFrame = XtCreateManagedWidget("addFrame",
+#ifdef MOTIF
+                                         xmPanedWindowWidgetClass,
+#else
+                                         panedWidgetClass,
+#endif
+                                         TopLevel, 0, 0);
+
+#ifndef MOTIF
+        XawPanedSetRefigureMode(AddFrame, False);
+#endif /* MOTIF */
+
+Instead, in 
+
+allMode.c:
+
+if (! AllFrame) {
+        AllFrame = XtCreateManagedWidget("allFrame", panedWidgetClass,
+                                         TopLevel, 0, 0);
+
+        XawPanedSetRefigureMode(AllFrame, False);
+
+XawPanedSetRefigureMode(AllFrame, True);
+
+artMode.c:
+
+if (! ArticleFrame) {
+        Dimension height;
+
+        ArticleFrame = XtCreateManagedWidget("artFrame", panedWidgetClass,
+                                             TopLevel, 0, 0);
+
+        XawPanedSetRefigureMode(ArticleFrame, False);
+
+XawPanedAllowResize(TEXT_PANE_CHILD(SubjectText), True);
+        TextSetLines(SubjectText, app_resources.topLines);
+        XawPanedAllowResize(TEXT_PANE_CHILD(SubjectText), False);
+awPanedSetRefigureMode(ArticleFrame, True);
+
+ngMode.c
+if (! NewsgroupFrame) {
+        NewsgroupFrame = XtCreateManagedWidget("ngFrame",
+                                               panedWidgetClass,
+                                               TopLevel, 0, 0);
+
+        XawPanedSetRefigureMode(NewsgroupFrame, False);
+XawPanedSetRefigureMode(NewsgroupFrame, True);
+It should be possible to reintroduce the Motif paned widgets in these 3 files. 
+
+
+cancel.c:
+CancelTopLevel = XtCreatePopupShell(name ? name : "Cancel",
+                                        transientShellWidgetClass,
+                                        TopLevel, shellArgs,
+                                        XtNumber(shellArgs));
+
+    box = ButtonBoxCreate("cancelBox", CancelTopLevel);
+    button = ButtonBoxAddButton("cancel", cancelCallbacks, box);
+    ButtonBoxDoneAdding(box);
+
+
+compose.c:
+
+ComposeTopLevel = XtCreatePopupShell("Composition", topLevelShellWidgetClass
+,
+                                         TopLevel, shellArgs, XtNumber(shellArgs
+));
+pane = XtVaCreateManagedWidget("pane", panedWidgetClass, ComposeTopLevel,
+                                   XtNwidth, (XtArgVal) width_val,
+                                   XtNheight, (XtArgVal) height_val,
+                                   (char *) (String)0);
+XawPanedSetMinMax(ComposeLabel, (int) height_val, (int) height_val);
+        XawPanedAllowResize(TEXT_PANE_CHILD(ComposeText), True);
+
+In xrn 6.13 we had:
+
+pane = XmCreatePanedWindow(ComposeTopLevel, "pane",
+                               NULL, 0);
+    XtManageChild(pane);
+    
+    titleStorage = XmStringCreate(titleString, XmSTRING_DEFAULT_CHARSET);
+    XtSetArg(labelArgs[0], XmNlabelString, titleStorage);
+    label = XmCreateLabel(pane, "label", labelArgs, XtNumber(labelArgs));
+    XtManageChild(label);
+    
+    XtSetArg(textArgs[0], XmNvalue, header);
+    ComposeText = XmCreateScrolledText(pane, "text",
+                                       textArgs, XtNumber(textArgs));
+
+and: 
+#ifndef MOTIF
+    XawPanedSetMinMax(label, (int) fontArgs[0].value, (int) fontArgs[0].value);
+    XawPanedAllowResize(ComposeText, True);
+#else
+    {
+      Arg args[3];
+
+      XtSetArg(args[0], XmNpaneMaximum, fontArgs[0].value);
+      XtSetArg(args[1], XmNpaneMinimum, fontArgs[0].value);
+      XtSetArg(args[2], XmNallowResize, True);
+      XtSetValues(ComposeText, args, 2);
+    }
+#endif
+
+#ifndef MOTIF
+        XawTextSetInsertionPoint(ComposeText, point);
+#else
+        XmTextSetCursorPosition(ComposeText, point);
+#endif
+
+
+dialogs.c:
+
+/* create the dialog box */
+    XtSetArg(dargs[cnt], XtNvalue, textField); cnt++;
+    XtSetArg(dargs[cnt], XtNlabel, t); cnt++;
+    XtSetArg(dargs[cnt], XtNinput, True); cnt++;
+    dialog = XtCreateManagedWidget("dialog", dialogWidgetClass, popup, dargs, cnt);
+
+In 6.13 this was
+
+#ifndef MOTIF
+    XtSetArg(dargs[cnt], XtNvalue, textField); cnt++;
+    XtSetArg(dargs[cnt], XtNlabel, title); cnt++;
+    XtSetArg(dargs[cnt], XtNinput, True); cnt++;
+    dialog = XtCreateManagedWidget("dialog", dialogWidgetClass, popup, dargs, cnt);
+#else
+    xs = XmStringCreate(title, XmSTRING_DEFAULT_CHARSET);
+    dialog = XmCreateRowColumn(popup, "dialog", dargs, cnt);
+    
+    cnt = 0;
+    XtSetArg(dargs[cnt], XmNlabelString, xs); cnt++;
+    XtSetArg(dargs[cnt], XmNalignment, XmALIGNMENT_BEGINNING); cnt++;
+    XtManageChild(XmCreateLabel(dialog, "label", dargs, cnt));
+    XmStringFree(xs);
+    
+    if (textField != DIALOG_NOTEXT) {
+      cnt = 0;
+      XtSetArg(dargs[cnt], XmNvalue, textField); cnt++;
+      textf = XmCreateText(dialog, "textField", dargs, cnt);
+      XtManageChild(textf);
+      XtSetKeyboardFocus(dialog, textf);
+    }
+
+cnt = 0;
+    XtSetArg(dargs[cnt], XmNorientation, XmHORIZONTAL); cnt++;
+    form = XmCreateForm(dialog, "buttons", dargs, cnt);
+#endif
+
+return XawDialogGetValueString(XtNameToWidget(popup, "dialog"));
+
+was in 6.13 
+
+after some preliminary definitions 
+
+#ifdef MOTIF
+    Widget form, textf, lastButton;
+    XmString xs;
+    int defaultThickness = 2;
+#endif
+
+
+ifndef MOTIF
+    return XawDialogGetValueString(XtNameToWidget(popup, "dialog"));
+#else
+    char *result;
+
+    result = XmTextGetString(XtNameToWidget(XtNameToWidget(popup, "dialog"),
+                                            "textField"));
+    if (result) {
+      return result;
+    } else {
+      return "";
+    }
+#endif
+
+ 
+
+mesg.c:
+[where ?] 
+
+busyCursor.c:
+[where ?]
+
+
+Xmisc.c
