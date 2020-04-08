@@ -1345,7 +1345,7 @@ void displayNewsgroupWidgets()
 
 	TopInfoLine = NewsgroupInfoLine;
 #ifdef MOTIF
-        XmProcessTraversal(AddFrame, XmTRAVERSE_CURRENT);
+        XmProcessTraversal(NewsgroupFrame, XmTRAVERSE_CURRENT);
 #else
 	XawPanedSetRefigureMode(NewsgroupFrame, True);
 

@@ -868,7 +868,7 @@ void displayAllWidgets()
 
 	TopInfoLine = AllInfoLine;
 #ifdef MOTIF
-        XmProcessTraversal(AddFrame, XmTRAVERSE_CURRENT);
+        XmProcessTraversal(AllFrame, XmTRAVERSE_CURRENT);
 #else
 	XawPanedSetRefigureMode(AllFrame, True);
 

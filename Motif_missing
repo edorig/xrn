@@ -34,6 +34,7 @@ if (! ArticleFrame) {
 
         XawPanedSetRefigureMode(ArticleFrame, False);
 
+[MOTIF Equivalent : Setting the resource XmNallowResize to True ] 
 XawPanedAllowResize(TEXT_PANE_CHILD(SubjectText), True);
         TextSetLines(SubjectText, app_resources.topLines);
         XawPanedAllowResize(TEXT_PANE_CHILD(SubjectText), False);

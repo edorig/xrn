@@ -3589,20 +3589,24 @@ void displayArticleWidgets()
 #undef TOP_INFO_LINE
 #undef BOTTOM_BUTTON_BOX
 #undef BUTTOM_INFO_LINE
-	/* How do we allow pane to be resized in Motif ? */
-	/* What are TextSetline etc... doing ? */ 
+	/* How do we allow a child of a pane to be resized in Motif ? 
+	 For now, resizing will take place only with the Athena Widgets. */
+	 
 	TextSetLineSelections(SubjectText);
 	TextDisableWordWrap(SubjectText);
+#ifndef MOTIF
 	XawPanedAllowResize(TEXT_PANE_CHILD(SubjectText), True);
+#endif
 	TextSetLines(SubjectText, app_resources.topLines);
+#ifndef MOTIF 
 	XawPanedAllowResize(TEXT_PANE_CHILD(SubjectText), False);
 	XtVaGetValues(SubjectText, XtNheight, &height, (String)0);
 	XtVaSetValues(SubjectText, XtNpreferredPaneSize, height, (String)0);
-
+#endif 	
 	TopInfoLine = SubjectInfoLine;
 	BottomInfoLine = ArticleInfoLine;
 #ifdef MOTIF
-	XmProcessTraversal(AddFrame, XmTRAVERSE_CURRENT);
+	XmProcessTraversal(ArticleFrame, XmTRAVERSE_CURRENT);
 #else
 	XawPanedSetRefigureMode(ArticleFrame, True);
 

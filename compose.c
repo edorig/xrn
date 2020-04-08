@@ -2452,14 +2452,14 @@ static int composePane(titleString, header, point)
 		  XtNwidth, (XtPointer) &width_val,
 		  XtNheight, (XtPointer) &height_val,
 		  (char *) (String)0);
-
+    /* We need to insert a Motif Pane as option here */ 
     pane = XtVaCreateManagedWidget("pane", panedWidgetClass, ComposeTopLevel,
 				   XtNwidth, (XtArgVal) width_val,
 				   XtNheight, (XtArgVal) height_val,
 				   (char *) (String)0);
 
     (void) strcpy(titleStorage, titleString);
-
+    /* Motif Label on the pane */ 
     ComposeLabel = XtCreateManagedWidget("label", labelWidgetClass, pane,
 					 labelArgs, XtNumber(labelArgs));
 
@@ -2487,7 +2487,7 @@ static int composePane(titleString, header, point)
 	XtVaGetValues(ComposeLabel,
 		      XtNheight, (XtPointer) &height_val,
 		      (String) 0);
-
+	/* Motif equivalent needed */ 
 	XawPanedSetMinMax(ComposeLabel, (int) height_val, (int) height_val);
 	XawPanedAllowResize(TEXT_PANE_CHILD(ComposeText), True);
     
