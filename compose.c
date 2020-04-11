@@ -60,11 +60,20 @@ struct passwd *getpwnam();
 #include <X11/Shell.h>
 #include <X11/cursorfont.h>
 
+#ifndef MOTIF
 #include <X11/Xaw/Paned.h>
 #include <X11/Xaw/Label.h>
 #include <X11/Xaw/Command.h>
 #include <X11/Xaw/Box.h>
 #include <X11/Xaw/Dialog.h>
+#else
+#include <Xm/PanedW.h>
+#include <Xm/Label.h>
+#include <Xm/PushB.h>
+#include <Xm/RowColumn.h>
+#include <Xm/Text.h>
+#include <Xm/MessageB.h>
+#endif
 
 #if defined(sun) && (defined(sparc) || defined(mc68000)) && !defined(SOLARIS)
 #include <vfork.h>
@@ -2424,12 +2433,22 @@ static int composePane(titleString, header, point)
     char *signature;
     Widget pane;
     Dimension height_val;
+#ifndef MOTIF 
     static char titleStorage[LABEL_SIZE];
+#else
+    XmString titleStorage;
+#endif
     Dimension width_val;
-    static Arg labelArgs[] = {
+
+      #ifndef MOTIF
+        static Arg labelArgs[] = {
 	{XtNlabel, (XtArgVal) titleStorage},
 	{XtNskipAdjust, (XtArgVal) True},
-    };
+	};
+	#else
+	static Arg labelArgs[1]; 
+	#endif 
+    
     static Arg shellArgs[] = {
 	{XtNinput, (XtArgVal) True},
 	{XtNsaveUnder, (XtArgVal) False},
@@ -2448,22 +2467,35 @@ static int composePane(titleString, header, point)
 
     ComposeTopLevel = XtCreatePopupShell("Composition", topLevelShellWidgetClass,
 					 TopLevel, shellArgs, XtNumber(shellArgs));
+#ifndef MOTIF 
     XtVaGetValues(TopLevel,
 		  XtNwidth, (XtPointer) &width_val,
 		  XtNheight, (XtPointer) &height_val,
 		  (char *) (String)0);
-    /* We need to insert a Motif Pane as option here */ 
     pane = XtVaCreateManagedWidget("pane", panedWidgetClass, ComposeTopLevel,
 				   XtNwidth, (XtArgVal) width_val,
 				   XtNheight, (XtArgVal) height_val,
 				   (char *) (String)0);
 
     (void) strcpy(titleStorage, titleString);
-    /* Motif Label on the pane */ 
     ComposeLabel = XtCreateManagedWidget("label", labelWidgetClass, pane,
 					 labelArgs, XtNumber(labelArgs));
 
+#else
+    pane = XmCreatePanedWindow(ComposeTopLevel, "pane",
+                               NULL, 0);
+    XtManageChild(pane);
+    
+    titleStorage = XmStringCreate(titleString, XmSTRING_DEFAULT_CHARSET);
+    XtSetArg(labelArgs[0], XmNlabelString, titleStorage);
+    ComposeLabel = XmCreateLabel(pane, "label", labelArgs, XtNumber(labelArgs));
+    XtManageChild(ComposeLabel);
+    XmStringFree(titleStorage); 
+#endif
+    
     ComposeText = TextCreate("text", False, pane);
+
+    
     TextSetString(ComposeText, header);
     FREE(header);
  
@@ -2487,10 +2519,21 @@ static int composePane(titleString, header, point)
 	XtVaGetValues(ComposeLabel,
 		      XtNheight, (XtPointer) &height_val,
 		      (String) 0);
-	/* Motif equivalent needed */ 
+	
+#ifndef MOTIF
 	XawPanedSetMinMax(ComposeLabel, (int) height_val, (int) height_val);
 	XawPanedAllowResize(TEXT_PANE_CHILD(ComposeText), True);
-    
+#else
+	{
+	  Arg args[3];
+	  /* Motif equivalent to allow Resizing of Compose text */
+	  /* Where are fontArgs[0].value defined ? */ 
+	  XtSetArg(args[0], XmNpaneMaximum, (int)height_val);
+	  XtSetArg(args[1], XmNpaneMinimum, (int)height_val);
+	  XtSetArg(args[2], XmNallowResize, True);
+	  XtSetValues(ComposeText, args, 2);
+	}
+#endif
 	{
 	    static Cursor compCursor = (Cursor) 0;
 
