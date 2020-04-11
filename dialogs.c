@@ -38,9 +38,17 @@
 #include <X11/Intrinsic.h>
 #include <X11/Shell.h>
 
+#ifndef MOTIF
 #include <X11/Xaw/Command.h>
 #include <X11/Xaw/Dialog.h>
 #include <X11/Xaw/Text.h>
+#else
+#include <Xm/PushB.h>
+#include <Xm/RowColumn.h>
+#include <Xm/Form.h>
+#include <Xm/Label.h>
+#include <Xm/Text.h>
+#endif
 
 #include "xthelper.h"
 #include "xmisc.h"
@@ -52,6 +60,56 @@
 #else
 #include <varargs.h>
 #endif
+
+
+#ifdef MOTIF
+/**********************************************************************
+Called when return is pressed in the text field.  When this happens,
+simulate pressing of the default button and call the default button's
+callback.
+**********************************************************************/
+
+void returnHandler(w, data, call_data)
+Widget w;
+Widget data;
+caddr_t call_data;
+{
+  Pixel topShadow, bottomShadow, bg, armColor;
+  Boolean fillArm;
+  Arg args[5];
+  int ct;
+
+/* This is bad -- we assume that the top and bottom shadows are colors */
+  ct = 0;
+  XtSetArg(args[ct], XmNtopShadowColor, &topShadow);  ct++;
+  XtSetArg(args[ct], XmNbottomShadowColor, &bottomShadow);  ct++;
+  XtSetArg(args[ct], XmNbackground, &bg);  ct++;
+  XtSetArg(args[ct], XmNarmColor, &armColor);  ct++;
+  XtSetArg(args[ct], XmNfillOnArm, &fillArm);  ct++;
+  XtGetValues(data, args, ct);
+
+  ct = 0;
+  XtSetArg(args[ct], XmNtopShadowColor, bottomShadow);  ct++;
+  XtSetArg(args[ct], XmNbottomShadowColor, topShadow);  ct++;
+  if (fillArm) {
+    XtSetArg(args[ct], XmNbackground, armColor);  ct++;
+  }
+  XtSetValues(data, args, ct);
+  XmUpdateDisplay(data);
+
+  XtCallCallbacks(data, XmNactivateCallback, NULL);
+
+  ct = 0;
+  XtSetArg(args[ct], XmNtopShadowColor, topShadow);  ct++;
+  XtSetArg(args[ct], XmNbottomShadowColor, bottomShadow);  ct++;
+  if (fillArm) {
+    XtSetArg(args[ct], XmNbackground, bg);  ct++;
+  }
+  XtSetValues(data, args, ct);
+  XmUpdateDisplay(data);
+}
+#endif
+
 
 /*
  * find the closest ancestor of w which is a shell
@@ -87,6 +145,13 @@ Widget CreateDialog(parent, title, textField, args, count)
 	{XtNinput, (XtArgVal) True},
         {XtNtransientFor, (XtArgVal) NULL},
     };
+
+#ifdef MOTIF
+    Widget form, textf, button, lastButton;
+    XmString xs;
+    int defaultThickness = 2;
+#endif
+
     Widget typein;
     char *t = XtNewString(title), *p;
 
@@ -100,10 +165,32 @@ Widget CreateDialog(parent, title, textField, args, count)
 			       shellArgs, XtNumber(shellArgs));
     
     /* create the dialog box */
+#ifndef MOTIF   
     XtSetArg(dargs[cnt], XtNvalue, textField); cnt++;
     XtSetArg(dargs[cnt], XtNlabel, t); cnt++;
     XtSetArg(dargs[cnt], XtNinput, True); cnt++;
     dialog = XtCreateManagedWidget("dialog", dialogWidgetClass, popup, dargs, cnt);
+#else
+    xs = XmStringCreate(title, XmSTRING_DEFAULT_CHARSET);
+    dialog = XmCreateRowColumn(popup, "dialog", dargs, cnt);
+    
+    cnt = 0;
+    XtSetArg(dargs[cnt], XmNlabelString, xs); cnt++;
+    XtSetArg(dargs[cnt], XmNalignment, XmALIGNMENT_BEGINNING); cnt++;
+    XtManageChild(XmCreateLabel(dialog, "label", dargs, cnt));
+    XmStringFree(xs);
+    if (textField != DIALOG_NOTEXT) {
+      cnt = 0;
+      XtSetArg(dargs[cnt], XmNvalue, textField); cnt++;
+      textf = XmCreateText(dialog, "textField", dargs, cnt);
+      XtManageChild(textf);
+      XtSetKeyboardFocus(dialog, textf);
+    }
+
+    cnt = 0;
+    XtSetArg(dargs[cnt], XmNorientation, XmHORIZONTAL); cnt++;
+    form = XmCreateForm(dialog, "buttons", dargs, cnt);
+#endif
 
     /* add the buttons */
     XtFree(t);
@@ -119,6 +206,7 @@ Widget CreateDialog(parent, title, textField, args, count)
 	callbacks[1].callback = args[i].handler;
 	callbacks[1].closure = args[i].data;
 
+#ifndef MOTIF
 	XtSetArg(bargs[0], XtNlabel, args[i].buttonName);
 	XtSetArg(bargs[1], XtNcallback, callbacks);
 	if (i == count - 1) {
@@ -128,13 +216,85 @@ Widget CreateDialog(parent, title, textField, args, count)
 	     XtCreateManagedWidget("command", commandWidgetClass,
 				   dialog, bargs, XtNumber(bargs));
 	}
-    }
 
+#else
+        {
+          static XtCallbackRec callback1[] = {
+            {NULL, NULL},
+            {NULL, NULL},
+          };
+          static XtCallbackRec callback2[] = {
+            {NULL, NULL},
+            {NULL, NULL},
+          };
+	  static XtCallbackRec callback3[] = {
+            {NULL, NULL},
+            {NULL, NULL},
+          };
+          Arg margs[10];
+          int ct = 0;
+
+          xs = XmStringCreate(args[i].buttonName, XmSTRING_DEFAULT_CHARSET);
+          XtSetArg(margs[ct], XmNlabelString, xs);  ct++;
+          callback1[0] = callbacks[0];
+          XtSetArg(margs[ct], XmNarmCallback, callback1);  ct++;
+          callback2[0] = callbacks[1];
+          XtSetArg(margs[ct], XmNactivateCallback, callback2); ct++;
+          callback3[0] = callbacks[2];
+          XtSetArg(margs[ct], XmNdisarmCallback, callback3);  ct++;
+          callback3[0] = callbacks[2];
+          XtSetArg(margs[ct], XmNdisarmCallback, callback3);  ct++;
+          XtSetArg(margs[ct], XmNtopAttachment, XmATTACH_FORM);  ct++;
+if (!i) {
+            XtSetArg(margs[ct], XmNtopOffset, 3*defaultThickness);  ct++;
+            XtSetArg(margs[ct], XmNleftAttachment, XmATTACH_FORM);  ct++;
+          } else {
+            XtSetArg(margs[ct], XmNtopOffset, 3*defaultThickness);  ct++;
+            XtSetArg(margs[ct], XmNleftAttachment, XmATTACH_WIDGET);  ct++;
+            XtSetArg(margs[ct], XmNleftWidget, lastButton);  ct++;
+          }
+ if (i == count - 1) {
+   bb  = XmCreatePushButton(form,"default", margs, ct);
+   XtManageChild(bb);
+   XmStringFree(xs); 
+	} else {
+   button = XmCreatePushButton(form, "command", margs, ct);
+          XtManageChild(button);
+	  lastButton = button;
+	  XmStringFree(xs);
+	}
+
+          
+          
+        }
+#endif
+
+    }
+#ifndef MOTIF
     if ((typein = XtNameToWidget(dialog, "value")) != 0) {
 	XtSetKeyboardFocus(dialog, typein);
 	XtSetKeyboardFocus(TopLevel, typein);
     }
-	
+#else
+    Arg bArgs[2]; 
+    XtSetArg(bArgs[0], XmNshowAsDefault, defaultThickness);
+    XtSetArg(bArgs[1], XmNtopOffset, 0);
+    XtSetValues(bb, bArgs, 2);
+    XtManageChild(form);
+    XtManageChild(dialog);
+
+    if (textField != DIALOG_NOTEXT) {
+      static XtCallbackRec callback[] = {
+        {returnHandler, NULL},
+        {NULL, NULL},
+      };
+
+      callback[0].closure = (caddr_t) bb;
+      XtSetArg(bArgs[0], XmNactivateCallback, callback);
+      XtSetValues(textf, bArgs, 1);
+    }
+#endif
+
     makeDefaultButton(bb);
 
     XtRealizeWidget(popup);
@@ -143,6 +303,8 @@ Widget CreateDialog(parent, title, textField, args, count)
     XtInstallAccelerators(dialog, bb);
     XtInstallAccelerators(popup, bb);
 #endif
+    
+#ifndef MOTIF
     if (typein != 0) {
 	XtInstallAccelerators(typein, bb);
 	if (textField) {
@@ -150,6 +312,7 @@ Widget CreateDialog(parent, title, textField, args, count)
 	    XtCallActionProc(typein, "beginning-of-line", 0, 0, 0);
 	}
     }
+#endif  
     return(popup);
 }
 
@@ -195,8 +358,22 @@ void PopDownDialog(dialog)
 char * GetDialogValue(popup)
     Widget popup;
 {
-  
+
+#ifndef MOTIF 
     return XawDialogGetValueString(XtNameToWidget(popup, "dialog"));
+
+#else
+    char *result;
+
+    result = XmTextGetString(XtNameToWidget(XtNameToWidget(popup, "dialog"),
+                                            "textField"));
+    if (result) {
+      return result;
+    } else {
+      return "";
+    }
+#endif
+
 }
 
 /*
@@ -345,7 +522,9 @@ String PasswordBox(widget, prompt)
   password_result = -1;
 
   dialog = CreateDialog(TopLevel, prompt, DIALOG_TEXT, args, XtNumber(args));
+  #ifndef MOTIF   
   XtVaSetValues(XtNameToWidget(dialog, "dialog.value"), XtNecho, 0, (String)0);
+  #endif
   PopUpDialog(dialog);
 
   while (password_result < 0) {
