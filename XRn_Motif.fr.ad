@@ -1,0 +1,414 @@
+! Traduction en français des ressources X pour XRn 
+XRn_Motif.version:			10.11 (Motif)
+XRn_Motif.Geometry:			680x700
+XRn*breakLength:			0
+! Polices: Nous avons besoin de polices de caractères avec encodage UTF-8.
+! Nous utilisons misc ou Courier. Changer la famille en gardant une police  
+! de largeur fixe pour les labels et les boutons.  
+XRn_Motif*.font:		 -misc-*-medium-r-*-*-13-*-*-*-*-*-iso10646-1 	
+XRn_Motif*Label.font:		"-misc-*-bold-*-*-*-12-*-*-*-*-*-iso10646-1" 
+XRn_Motif*Command.font:	"-misc-*-medium-*-*-*-14-*-*-*-*-*-iso10646-1" 
+XRn_Motif*Dialog.borderWidth:		1
+XRn_Motif*Dialog.default.accelerators: #override \n\
+	<Key>Linefeed: set() notify() unset() \n\
+	<Key>Return: set() notify() unset()
+XRn_Motif*XmLabel.fontList:		"-adobe-courier-*-r-*-*-12-*-*-*-*-*-iso10646-1"
+XRn_Motif*XmPushButton.fontList:	"-adobe-courier-*-r-*-*-12-*-*-*-*-*-iso10646-1"
+
+*lockFile:	~/.xrnlock
+
+*includeHeader:	off
+
+! Authentication:
+! You might want to uncomment this to get a default other than the
+! generic authenticator "conventional" default of "any <userid>".
+! NNTPAUTH environment variable overrides this if present.
+!*authenticator:			ypauth
+
+! Following command is some sort of "command environment" that allows you
+! to prompt the user for authentication information.  This is processed
+! by sprintf to insert the value of authenticator/NNTPAUTH.
+*authenticatorCommand:	     xterm -geometry 30x5+1+1 -T 'Authentification pour les News' -e "%s"
+
+! Composition pane stuff
+XRn_Motif*Composition.pane*text.scrollVertical:		true
+XRn_Motif*Composition.pane*text.wrap:			false
+
+! button keybindings
+
+XRn_Motif*addFrame*list*translations: #override\
+  <Key>q:	addQuit()	\n\
+  <Key>x:	addIgnoreRest()	\n\
+  <Key>\^:	addFirst()	\n\
+  <Key>\$:	addLast()	\n\
+  <Key>+:	addAfter()	\n\
+  <Key>u:	addUnsub()	\n\
+  <Key>i:	addIgnore()	\n\
+  <Key>osfLeft:	beep()	\n\
+  <Key>osfRight:	beep()	\n
+
+XRn_Motif*ngFrame*newsgroups*translations: #override					\n\
+  :<Btn1Up>:		extend-end() doPrefetch()				\n\
+  Shift<Btn1Up>:	extend-end() doPrefetch()				\n\
+  :<Btn2Down>:		select-start() extend-end() doTheRightThing(jump)	\n\
+  <Key>q:		ngQuit()						\n\
+  <Key>space:		ngRead()						\n\
+  <Key>y:		ngRead()						\n\
+  <Key>n:		ngNext() doPrefetch()					\n\
+  <Key>osfDown:		ngNext() doPrefetch()					\n\
+  <Key>p:		ngPrev() doPrefetch()					\n\
+  <Key>osfUp:		ngPrev() doPrefetch()					\n\
+  Ctrl<Key>v:		ngScroll() doPrefetch()					\n\
+  <Key>Next:		ngScroll() doPrefetch()					\n\
+  Meta<Key>v:		ngScrollBack() doPrefetch()				\n\
+  <Key>Prior:		ngScrollBack() doPrefetch()				\n\
+  <Key>c:		ngCatchUp() doPrefetch()				\n\
+  ~Ctrl ~Shift<Key>s:	ngSubscribe()						\n\
+  <Key>u:		ngUnsub() doPrefetch()					\n\
+  ~Shift<Key>g:		ngGoto()						\n\
+  Shift<Key>L:		ngAllGroups()						\n\
+  ~Shift<Key>r:		ngRescan()						\n\
+  Shift<Key>R:		ngGetList()						\n\
+  <Key>-:		ngPrevGroup()						\n\
+  ~Shift<Key>l:		ngListOld()						\n\
+  ~Ctrl Shift<Key>S:	ngSelect()						\n\
+  ~Shift<Key>m:		ngMove()						\n\
+  <Key>x:		ngExit()						\n\
+  ~Shift Ctrl<Key>s:	ngCheckPoint()						\n\
+  Shift<Key>G:		ngGripe()						\n\
+  ~Shift<Key>a:		ngPost()						\n\
+  Shift<Key>A:		ngPostAndMail()						\n\
+  Shift<Key>M:		ngMail()						\n\
+  <Key>osfLeft:		beep()						\n\
+  <Key>osfRight:		beep()						\n
+
+*ngUnsub*translations: #override \n\
+	<Btn1Up>:	Activate() Disarm() doPrefetch()
+*ngCatchUp*translations: #override \n\
+	<Btn1Up>:	Activate() Disarm() doPrefetch()
+*ngNext*translations: #override \n\
+	<Btn1Up>:	Activate() Disarm() doPrefetch()
+*ngScroll*translations: #override \n\
+	<Btn1Up>:	Activate() Disarm() doPrefetch()
+*ngScrollBack*translations: #override \n\
+	<Btn1Up>:	Activate() Disarm() doPrefetch()
+
+*artFrame*subjects*translations: #override			\n\
+  <Btn2Down>:		select-start() extend-end() artNext()	\n\
+  <Key>space:		doTheRightThing(goto)			\n\
+  <Key>q:		artQuit()				\n\
+  :~Ctrl ~Meta<Key>n:	artNextUnread()				\n\
+  :~Ctrl ~Meta<Key>N:	artNext()				\n\
+  ~Ctrl~Meta<Key>p:	artPrev()				\n\
+  <Key>-:		artLast()				\n\
+  <Key>Linefeed:	artCurrent()				\n\
+  <Key>Return:		artCurrent()				\n\
+  ~Meta<Key>osfUp:		artUp()					\n\
+  ~Meta<Key>osfDown:	artDown()				\n\
+  Meta<Key>n:		artNextGroup()				\n\
+  ~Meta<Key>c:		artCatchUp()				\n\
+  Meta<Key>c:		artFedUp()				\n\
+  ~Shift<Key>.:		artGotoArticle()			\n\
+  <Key>j:		artMarkRead()				\n\
+  ~Shift<Key>m:		artMarkUnread()				\n\
+  <Key>+:		artSub()				\n\
+  <Key>u:		artUnsub()				\n\
+  Ctrl<Key>n:		artSubNext()				\n\
+  Ctrl<Key>p:		artSubPrev()				\n\
+  Meta<Key>p:		artThreadParent()			\n\
+  Shift<Key>L:		artListOld()				\n\
+  ~Meta<Key>k:		artKillSubject()			\n\
+  Meta<Key>k:		artKillAuthor()				\n\
+  ~Meta<Key>t:		artKillThread()				\n\
+  Meta<Key>t:		artKillSubthread()			\n\
+  ~Meta<Key>/:		artSubSearch()				\n\
+  Meta<Key>/:		artContinue()				\n\
+  ~Shift Ctrl<Key>v:	artScroll()				\n\
+  ~Shift <Key>Next:	artScroll()				\n\
+  ~Shift Meta<Key>v:	artScrollBack()				\n\
+  ~Shift <Key>Prior:	artScrollBack()				\n\
+  <Key>b:		artScrollBack()				\n\
+  Meta<Key>osfDown:	artScrollLine()				\n\
+  Meta<Key>osfUp:		artScrollBackLine()			\n\
+  <Key>\>:		artScrollEnd()				\n\
+  <Key>\<:		artScrollBeginning()			\n\
+  Shift Ctrl<Key>v:	artScrollIndex()			\n\
+  Shift <Key>Next:	artScrollIndex()			\n\
+  Shift Meta<Key>v:	artScrollIndexBack()			\n\
+  Shift <Key>Prior:	artScrollIndexBack()			\n\
+  ~Shift<Key>a:		artPost()				\n\
+  Shift<Key>A:		artPostAndMail()			\n\
+  Shift<Key>M:		artMail()				\n\
+  ~Shift ~Ctrl<Key>x:	artExit()				\n\
+  Ctrl<Key>s:		artCheckPoint()				\n\
+  Shift<Key>G:		artGripe()				\n\
+  ~Ctrl<Key>s:		artSave()				\n\
+  <Key>w:		artSave()				\n\
+  <Key>|:		artSave()				\n\
+  <Key>r:		artReply()				\n\
+  Meta<Key>f:		artForward()				\n\
+  ~Meta ~Ctrl<Key>f:	artFollowup()				\n\
+  Ctrl<Key>f:		artFollowupAndReply()			\n\
+  Shift<Key>C:		artCancel()				\n\
+  Ctrl<Key>x:		artRot13()				\n\
+  Shift<Key>X:		artRot13()				\n\
+  ~Ctrl ~Meta<Key>v:	artHeader()				\n\
+  <Key>osfLeft:		beep()				\n\
+  <Key>osfRight:		beep()				\n\
+  ~Ctrl<Key>o:		artResort()				\n\
+  Ctrl<Key>o:		artResort(false)			\n
+
+*allFrame*list*translations: #override		\n\
+  <Btn2Down>:	select-start() extend-end() allGoto()	\n\
+  <Key>q:	allQuit()				\n\
+  <Key>n:	allNext()				\n\
+  <Key>osfDown:	allNext()				\n\
+  <Key>p:	allPrev()				\n\
+  <Key>osfUp:	allPrev()				\n\
+  Ctrl<Key>v:	allScroll()				\n\
+  <Key>Next:	allScroll()				\n\
+  Meta<Key>v:	allScrollBack()				\n\
+  <Key>Prior:	allScrollBack()				\n\
+  <Key>/:	allSearch()				\n\
+  <Key>l:	allLimit()				\n\
+  ~Shift<Key>s:	allSub()				\n\
+  <Key>\^:	allFirst()				\n\
+  <Key>\$:	allLast()				\n\
+  <Key>+:	allAfter()				\n\
+  <Key>u:	allUnsub()				\n\
+  <Key>i:	allIgnore()				\n\
+  <Key>space:	allGoto()				\n\
+  <Key>g:	allGoto()				\n\
+  Shift<Key>S:	allSelect()				\n\
+  ~Shift<Key>m:	allMove()				\n\
+  <Key>o:	allToggle()				\n\
+  ~Shift<Key>a:	allPost()				\n\
+  Shift<Key>A:	allPostAndMail()			\n\
+  Shift<Key>M:	allMail()				\n\
+  <Key>osfLeft:	beep()				\n\
+  <Key>osfRight:	beep()				\n
+
+! Kill button actions
+
+*artKillSubject*translations: #override	\n\
+  <BtnDown>:		Arm()			\n\
+  <BtnUp>:		Activate() Disarm()	\n
+
+*artKillAuthor*translations: #override	\n\
+  <BtnDown>:		Arm()			\n\
+  <BtnUp>:		Activate() Disarm()	\n
+
+*artKillThread*translations: #override	\n\
+  <BtnDown>:		Arm()			\n\
+  <BtnUp>:		Activate() Disarm()	\n
+
+*artKillSubthread*translations: #override	\n\
+  <BtnDown>:		Arm()			\n\
+  <BtnUp>:		Activate() Disarm()	\n
+
+! Default button lists
+
+*addButtonList: addQuit addIgnoreRest addFirst addLast addAfter \
+	addUnsub addIgnore
+
+*ngButtonList: ngQuit ngRead ngNext ngPrev ngCatchUp ngSubscribe \
+	ngUnsub ngGoto ngAllGroups ngRescan ngPrevGroup ngListOld \
+	ngSelect ngMove ngExit ngCheckPoint ngGripe ngPost \
+	ngPostAndMail
+
+*allButtonList: allQuit allNext allPrev allSearch allLimit allSub \
+	allFirst allLast allAfter allUnsub allIgnore allGoto \
+	allSelect allMove allToggle allPost allPostAndMail
+
+*artButtonList: artQuit artNextUnread artNext artPrev artLast \
+	artNextGroup artCatchUp artFedUp artGotoArticle artMarkRead \
+	artMarkUnread artUnsub artSubNext artSubPrev artThreadParent \
+	artListOld artResort artKillSubject artKillAuthor \
+	artKillThread artKillSubthread artSubSearch \
+	artContinue artPost artPostAndMail artExit artCheckPoint
+
+*artSpecButtonList: artSave artReply artForward artFollowup \
+	artFollowupAndReply artCancel artRot13 artXlate artHeader \
+	artPrint
+
+! scrollbars, resize, wrap
+*popup.dialog*value.scrollVertical:	False
+*popup.dialog*value.scrollHorizontal:	False
+
+! A few directions for vpane resizing...
+
+! Generic
+
+XRn_Motif*Paned.Box.allowResize:		True
+XRn_Motif*Paned.Box.skipAdjust:		True
+XRn_Motif*Paned.Box.showGrip:		False
+XRn_Motif*Paned.Box.resizeToPreferred:	True
+
+! Add mode
+
+*addFrame*list.scrollVertical:		True
+*addFrame*list.cursor:		left_ptr
+
+! All mode
+
+*allFrame*list.scrollVertical:	True
+*allFrame*list.cursor:		left_ptr
+
+! Article mode
+
+*artFrame.subjectsSW.resizeToPreferred:	True
+*artFrame.subjectsSW.skipAdjust:	False
+
+*artFrame*subjects.scrollVertical:	True
+*artFrame*subjects.resizeToPreferred:	True
+*artFrame*subjects.skipAdjust:		True
+*artFrame*subjects.cursor:		left_ptr
+*artFrame*subjects.editable:		False
+
+*artFrame*text.scrollVertical:		True
+*artFrame*text.wrap:			True
+*artFrame*text.editable:		false
+
+! Newsgroup mode
+
+*ngFrame*newsgroups.scrollVertical:	True
+*ngFrame*newsgroups.cursor:		left_ptr
+*ngFrame*newsgroups.editable:		false
+
+! button names
+*addQuit.labelString:		Quitter
+*addIgnoreRest.labelString:	Ignorer reste
+*addFirst.labelString:		Ajouter en premier
+*addLast.labelString:		Ajouter en dernier
+*addAfter.labelString:		Ajouter après...
+*addUnsub.labelString:		Ajouter aux non-souscrits
+*addIgnore.labelString:		Ignorer
+
+*ngQuit.labelString:		Quitter
+*ngRead.labelString:		Lire
+*ngNext.labelString:		Suivant
+*ngPrev.labelString:		Précecent
+*ngCatchUp.labelString:		Tout lu
+*ngSubscribe.labelString:	Abonnement
+*ngUnsub.labelString:		Désabonnement
+*ngGoto.labelString:		Lire ce groupe
+*ngListOld.labelString:		Montrer anciens
+*ngAllGroups.labelString:		Tous les groupes
+*ngRescan.labelString:		Recharger
+*ngGetList.labelString:		Obtenir la liste des groupes
+*ngPrevGroup.labelString:	Groupe précedent
+*ngSelect.labelString:		Sélectionner groupes
+*ngMove.labelString:		Déplacer
+*ngExit.labelString:		Sortir
+*ngCheckPoint.labelString:	Mise à jour
+*ngPost.labelString:		Poster
+*ngPostAndMail.labelString:	Poster & Courrier
+*ngMail.labelString:		Envoyer Courrier
+*ngGripe.labelString:		Ouin-ouin
+*ngScroll.labelString:		Défilement avant
+*ngScrollBack.labelString:	Défilement arriere
+
+*allQuit.labelString:		Quitter
+*allNext.labelString:		Suivant
+*allPrev.labelString:		Précedent
+*allSub.labelString:		Abonnement
+*allFirst.labelString:		Tête des abonnements
+*allLast.labelString:		Queue des abonnements
+*allAfter.labelString:		Abonnemment aprés...
+*allUnsub.labelString:		Désabonnement
+*allIgnore.labelString:		Ignorer
+*allGoto.labelString:		Aller au groupe
+*allSelect.labelString:		Sélectionner groupes
+*allMove.labelString:		Deplacer
+*allToggle.labelString:		Ordre alphabétique (O/N)
+*allScroll.labelString:		Défilement avant
+*allScrollBack.labelString:	Défilement arrière
+*allSearch.labelString:		Chercher
+*allLimit.labelString:		Limiter la liste
+*allPost.labelString:		Poster
+*allPostAndMail.labelString:	Poster & Courrier
+*allMail.labelString:		Courrier
+
+*artQuit.labelString:		Quitter
+*artNext.labelString:		Suivant
+*artCurrent.labelString:		Actuel
+*artUp.labelString:		ligne index vers le haut
+*artDown.labelString:		ligne index vers le bas
+*artScroll.labelString:		Défilement avant
+*artScrollBack.labelString:	Défilement arriere
+*artScrollLine.labelString:	Defilement ligne avant
+*artScrollBackLine.labelString:	Defilement ligne arriere
+*artScrollEnd.labelString:	Fin 
+*artScrollBeginning.labelString:	Début
+*artScrollIndex.labelString:	Défilement index avant
+*artScrollIndexBack.labelString:	Défilement index arriere
+*artNextUnread.labelString:	Non-lu suivant
+*artPrev.labelString:		Précedent
+*artLast.labelString:		Dernier
+*artNextGroup.labelString:	Groupe suivant
+*artGotoArticle.labelString:	Aller article
+*artCatchUp.labelString:	Tout lu 
+*artFedUp.labelString:		Fatigué
+*artMarkRead.labelString:	Marquer lu
+*artMarkUnread.labelString:	Marquer non-lu
+*artUnsub.labelString:		Désabonnement
+*artSub.labelString:		Abonnement
+*artSubNext.labelString:	Sujet suivant 
+*artSubPrev.labelString:	Sujet précedent
+*artThreadParent.labelString:	Aller au parent
+*artKillSubject.labelString:	Masquer sujet
+*artKillAuthor.labelString:	Masquer auteur
+*artKillThread.labelString:	Masquer fil
+*artKillSubthread.labelString:	Masquer sous-file
+*artSubSearch.labelString:	Rechercher sujet
+*artContinue.labelString:		Continuer
+*artPost.labelString:		Poster
+*artPostAndMail.labelString:	Poster & Courrier
+*artMail.labelString:		Courrier
+*artExit.labelString:		Sortir
+*artGripe.labelString:		Ouin-ouin
+*artListOld.labelString:		Lister anciens
+*artResort.labelString:		Re-trier liste
+*artCheckPoint.labelString:	Mise à jour
+
+*artSave.labelString:		Sauver
+*artReply.labelString:		Répondre
+*artForward.labelString:		Transférer
+*artFollowup.labelString:		Suite
+*artFollowupAndReply.labelString:	Suite & Réponse
+*artCancel.labelString:		Annuler
+*artXlate.labelString:		Traduire
+*artRot13.labelString:		Rot-13
+*artHeader.labelString:		En-têtes (O/N) 
+*artPrint.labelString:		Imprimer
+
+*compAbort.labelString:		Abandon
+*compSwitchFollowup.labelString:	Poster à la place
+*compSwitchReply.labelString:	Courrier à la place
+*compSwitchBoth.labelString:	Poster et courrier à la place
+*compSend.labelString:		Envoyer
+*compSave.labelString:		Sauver
+*compIncludeArticle.labelString:	Inclure article
+*compIncludeFile.labelString:	Inclure fichier
+
+XRn_Motif*Cancel*labelString:		Annuler recherche
+
+*CancelGotoArticle*labelString:	Annuler
+
+*CancelListOld*labelString:	Annuler
+
+*CancelThreadParent*labelString:	Annuler
+
+
+XRn_Motif*Information.autoUnmanage:		False
+XRn_Motif*Information*text.width:		500
+XRn_Motif*Information*text.height:		150
+XRn_Motif*Information*cancelLabelString:	Vu 
+XRn_Motif*Information*okLabelString:		Effacer
+
+XRn_Motif*Information*label.labelString:	Information
+XRn_Motif*Information.saveUnder:			False
+XRn_Motif*Information*text.displayCaret:		False
+XRn_Motif*Information*text.scrollVertical:	True
+XRn_Motif*Information*text.wordWrap:		True
+XRn_Motif*Information*text.editable:		false

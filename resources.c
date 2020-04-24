@@ -831,6 +831,7 @@ Widget Initialize(argc, argv)
     char *tmp_ptr = 0;
 
 #if XtSpecificationRelease > 5
+    XtSetLanguageProc(NULL,NULL,NULL); 
     widget = XtOpenApplication(&TopContext, XRN_APP_CLASS,
 			       optionList, XtNumber(optionList),
 			       &argc, argv, fallback_resources,

@@ -64,7 +64,10 @@ InfoDialogCreate(Widget parent)
 	pane = XmCreatePanedWindow(MesgTopLevel, "pane", NULL, 0);
 	label = InfoLineCreate("label", 0, pane);
 	MesgText = TextCreate("text", True, pane);
-
+	/* Label Strings for the buttons should be created. They are 
+	   XmNcancelLabelString and XmNokLabelString both of type XmString 
+          use XtSetArg(args[n], XmNcancelLabelString, cancellabel); and 
+XtSetValues(MesgTopLevel, args, n); */ 
         XtAddCallback(MesgTopLevel, XmNcancelCallback,
 		      mesgDismissXmCallback, NULL);
         XtAddCallback(MesgTopLevel, XmNokCallback, mesgClearXmCallback, NULL);

@@ -171,7 +171,7 @@ Widget CreateDialog(parent, title, textField, args, count)
     XtSetArg(dargs[cnt], XtNinput, True); cnt++;
     dialog = XtCreateManagedWidget("dialog", dialogWidgetClass, popup, dargs, cnt);
 #else
-    xs = XmStringCreate(title, XmSTRING_DEFAULT_CHARSET);
+    xs = XmStringCreateLocalized(title);
     dialog = XmCreateRowColumn(popup, "dialog", dargs, cnt);
     
     cnt = 0;
@@ -234,7 +234,7 @@ Widget CreateDialog(parent, title, textField, args, count)
           Arg margs[10];
           int ct = 0;
 
-          xs = XmStringCreate(args[i].buttonName, XmSTRING_DEFAULT_CHARSET);
+          xs = XmStringCreateLocalized(args[i].buttonName);
           XtSetArg(margs[ct], XmNlabelString, xs);  ct++;
           callback1[0] = callbacks[0];
           XtSetArg(margs[ct], XmNarmCallback, callback1);  ct++;
