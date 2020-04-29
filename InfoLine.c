@@ -71,7 +71,7 @@ void InfoLineSet(w, text)
 
 #ifdef MOTIF
     /* Yes, I know this is an old function and not the preferred way, but for now...kb */
-    x = XmStringCreateSimple(newString);
+    x = XmStringCreateLocalized(newString);
     XtVaSetValues(w, XmNlabelString, x, (String)0);
     XmStringFree(x);
 #else

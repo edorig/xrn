@@ -28,7 +28,7 @@ XRn_Motif*XmPushButton.fontList:	"-adobe-courier-*-r-*-*-12-*-*-*-*-*-iso10646-1
 ! Following command is some sort of "command environment" that allows you
 ! to prompt the user for authentication information.  This is processed
 ! by sprintf to insert the value of authenticator/NNTPAUTH.
-*authenticatorCommand:	     xterm -geometry 30x5+1+1 -T 'Authentification pour les News' -e "%s"
+*authenticatorCommand:	     xterm -geometry 30x5+1+1 -T 'Autenticazione per i News' -e "%s"
 
 ! Composition pane stuff
 XRn_Motif*Composition.pane*text.scrollVertical:		true
@@ -274,139 +274,139 @@ XRn_Motif*Paned.Box.resizeToPreferred:	True
 *ngFrame*newsgroups.scrollVertical:	True
 *ngFrame*newsgroups.cursor:		left_ptr
 *ngFrame*newsgroups.editable:		false
-
+&
 ! button names
-*addQuit.labelString:		Quitter
-*addIgnoreRest.labelString:	Ignorer reste
-*addFirst.labelString:		Abonnement en premier
-*addLast.labelString:		Abonnement en dernier
-*addAfter.labelString:		Abonnement après...
-*addUnsub.labelString:		Ajouter aux non-souscrits
-*addIgnore.labelString:		Ignorer
+*addQuit.labelString:		Lasciare
+*addIgnoreRest.labelString:	Ignorare il resto
+*addFirst.labelString:		Abbonarsi in primo
+*addLast.labelString:		Abbonarsi in ultimo
+*addAfter.labelString:		Abbonarsi dopo...
+*addUnsub.labelString:		Aggiungere ai non-sottoscritti
+*addIgnore.labelString:		Ignorare
 
-*ngQuit.labelString:		Quitter
-*ngRead.labelString:		Lire
-*ngNext.labelString:		Suivant
-*ngPrev.labelString:		Précédent
-*ngCatchUp.labelString:		Tout lu
-*ngSubscribe.labelString:	Abonnement
-*ngUnsub.labelString:		Désabonnement
-*ngGoto.labelString:		Lire ce groupe
-*ngListOld.labelString:		Montrer anciens
-*ngAllGroups.labelString:		Tous les groupes
-*ngRescan.labelString:		Recharger
-*ngGetList.labelString:		Obtenir la liste des groupes
-*ngPrevGroup.labelString:	Groupe précédent
-*ngSelect.labelString:		Sélectionner groupes
-*ngMove.labelString:		Déplacer
-*ngExit.labelString:		Sortir
-*ngCheckPoint.labelString:	Mise à jour
-*ngPost.labelString:		Poster
-*ngPostAndMail.labelString:	Poster & Courrier
-*ngMail.labelString:		Envoyer Courrier
-*ngGripe.labelString:		Se plaindre
-*ngScroll.labelString:		Défilement avant
-*ngScrollBack.labelString:	Défilement arrière
+*ngQuit.labelString:		Lasciare
+*ngRead.labelString:		Leggere
+*ngNext.labelString:		Successivo
+*ngPrev.labelString:		Precedente
+*ngCatchUp.labelString:		Tutto letto
+*ngSubscribe.labelString:	Abbonarsi
+*ngUnsub.labelString:		Disabbonarsi
+*ngGoto.labelString:		Leggere cuesto gruppo
+*ngListOld.labelString:		Mostrare vecchi
+*ngAllGroups.labelString:	Tutti i gruppi
+*ngRescan.labelString:		Ricarcare
+*ngGetList.labelString:		Otttenere la lista dei gruppi
+*ngPrevGroup.labelString:	Gruppo precedente
+*ngSelect.labelString:		Selezionare gruppi
+*ngMove.labelString:		Spostare
+*ngExit.labelString:		Uscire
+*ngCheckPoint.labelString:	Aggiornare
+*ngPost.labelString:		Postare
+*ngPostAndMail.labelString:	Postare & Email
+*ngMail.labelString:		Mandare Email
+*ngGripe.labelString:		Lamentarsi
+*ngScroll.labelString:		Sfilare avanti
+*ngScrollBack.labelString:	Sfilare indietro
 
-*allQuit.labelString:		Quitter
-*allNext.labelString:		Suivant
-*allPrev.labelString:		Précédent
-*allSub.labelString:		Abonnement
-*allFirst.labelString:		Tête des abonnements
-*allLast.labelString:		Queue des abonnements
-*allAfter.labelString:		Abonnemment aprés...
-*allUnsub.labelString:		Désabonnement
-*allIgnore.labelString:		Ignorer
-*allGoto.labelString:		Aller au groupe
-*allSelect.labelString:		Sélectionner groupes
-*allMove.labelString:		Déplacer
-*allToggle.labelString:		Ordre alphabétique (O/N)
-*allScroll.labelString:		Défilement avant
-*allScrollBack.labelString:	Défilement arrière
-*allSearch.labelString:		Chercher
-*allLimit.labelString:		Limiter la liste
-*allPost.labelString:		Poster
-*allPostAndMail.labelString:	Poster & Courrier
-*allMail.labelString:		Courrier
+*allQuit.labelString:		Lasciare
+*allNext.labelString:		Successivo
+*allPrev.labelString:		Precedente
+*allSub.labelString:		Abbonarsi
+*allFirst.labelString:		Abbonarsi in primo
+*allLast.labelString:		Abbonarsi in ultimo
+*allAfter.labelString:		Abbonarsi dopo...
+*allUnsub.labelString:		Disabbonarsi
+*allIgnore.labelString:		Ignorare
+*allGoto.labelString:		Andare al gruppo
+*allSelect.labelString:		Selezionare gruppi
+*allMove.labelString:		Spostare
+*allToggle.labelString:		Ordine alfabetici (S/N)
+*allScroll.labelString:		Sfilare avanti
+*allScrollBack.labelString:	Sfilare indietro
+*allSearch.labelString:		Cercare
+*allLimit.labelString:		Riddure la lista
+*allPost.labelString:		Postare
+*allPostAndMail.labelString:	Postare & Email
+*allMail.labelString:		Email
 
-*artQuit.labelString:		Quitter
-*artNext.labelString:		Suivant
-*artCurrent.labelString:		Actuel
-*artUp.labelString:		ligne index vers le haut
-*artDown.labelString:		ligne index vers le bas
-*artScroll.labelString:		Défilement avant
-*artScrollBack.labelString:	Défilement arrière
-*artScrollLine.labelString:	Defilement ligne avant
-*artScrollBackLine.labelString:	Defilement ligne arrière
-*artScrollEnd.labelString:	Fin 
-*artScrollBeginning.labelString:	Début
-*artScrollIndex.labelString:	Défilement index avant
-*artScrollIndexBack.labelString:	Défilement index arrière
-*artNextUnread.labelString:	Non-lu suivant
-*artPrev.labelString:		Précédent
-*artLast.labelString:		Dernier
-*artNextGroup.labelString:	Groupe suivant
-*artGotoArticle.labelString:	Aller article
-*artCatchUp.labelString:	Tout lu 
-*artFedUp.labelString:		Fatigué
-*artMarkRead.labelString:	Marquer lu
-*artMarkUnread.labelString:	Marquer non-lu
-*artUnsub.labelString:		Désabonnement
-*artSub.labelString:		Abonnement
-*artSubNext.labelString:	Sujet suivant 
-*artSubPrev.labelString:	Sujet précédent
-*artThreadParent.labelString:	Aller au parent
-*artKillSubject.labelString:	Masquer sujet
-*artKillAuthor.labelString:	Masquer auteur
-*artKillThread.labelString:	Masquer fil
-*artKillSubthread.labelString:	Masquer sous-fil
-*artSubSearch.labelString:	Rechercher sujet
-*artContinue.labelString:		Continuer
-*artPost.labelString:		Poster
-*artPostAndMail.labelString:	Poster & Courrier
-*artMail.labelString:		Courrier
-*artExit.labelString:		Sortir
-*artGripe.labelString:		Se plaindre
-*artListOld.labelString:		Lister anciens
-*artResort.labelString:		Re-trier liste
-*artCheckPoint.labelString:	Mise à jour
+*artQuit.labelString:		Lasciare
+*artNext.labelString:		Successivo
+*artCurrent.labelString:	Attuale
+*artUp.labelString:		linea indico in alto
+*artDown.labelString:		linea indico in basso
+*artScroll.labelString:		Sfilare avanti
+*artScrollBack.labelString:	Sfilare indietro
+*artScrollLine.labelString:	Sfilare linea avanti
+*artScrollBackLine.labelString:	Sfilare linea indietro
+*artScrollEnd.labelString:	Fine 
+*artScrollBeginning.labelString:	Inizio
+*artScrollIndico.labelString:	Sfilare indico avanti
+*artScrollIndicoBack.labelString:	   Sfilare indico indietro
+*artNextUnread.labelString:	Non-letto successivo
+*artPrev.labelString:		Precedente
+*artLast.labelString:		Ultimo
+*artNextGroup.labelString:	Gruppo successivo
+*artGotoArticle.labelString:	Andare articolo
+*artCatchUp.labelString:	Letto tutto 
+*artFedUp.labelString:		Stufo
+*artMarkRead.labelString:	Marcare letto
+*artMarkUnread.labelString:	Marcare non-letto
+*artUnsub.labelString:		Disabbonarsi
+*artSub.labelString:		Abbonarsi
+*artSubNext.labelString:	Ogetto successivo 
+*artSubPrev.labelString:	Ogetto precedente
+*artThreadParent.labelString:	Andare al padre
+*artKillSubject.labelString:	Nascondere ogetto
+*artKillAuthor.labelString:	Nascondere autore
+*artKillThread.labelString:	Nascondere thread
+*artKillSubthread.labelString:	Nascondere sub-thread
+*artSubSearch.labelString:	Ricercare ogetto
+*artContinue.labelString:		Continuare
+*artPost.labelString:		Postare
+*artPostAndMail.labelString:	Postare & Email
+*artMail.labelString:		Email
+*artExit.labelString:		Uscire
+*artGripe.labelString:		Lamentarsi
+*artListOld.labelString:	Lista vecchi
+*artResort.labelString:		Smistare lista di novo
+*artCheckPoint.labelString:	Aggiornare
 
-*artSave.labelString:		Sauver
-*artReply.labelString:		Répondre
-*artForward.labelString:		Transférer
-*artFollowup.labelString:		Suite
-*artFollowupAndReply.labelString:	Suite & Réponse
-*artCancel.labelString:		Annuler
-*artXlate.labelString:		Traduire
+*artSave.labelString:		Salvare
+*artReply.labelString:		Rispondere
+*artForward.labelString:		Trasferire
+*artFollowup.labelString:		Seguito
+*artFollowupAndReply.labelString:	Seguito e Risposta
+*artCancel.labelString:		Cancellare
+*artXlate.labelString:		Traducere
 *artRot13.labelString:		Rot-13
-*artHeader.labelString:		En-têtes (O/N) 
-*artPrint.labelString:		Imprimer
+*artHeader.labelString:		Intestazioni (S/N) 
+*artPrint.labelString:		Stampare
 
-*compAbort.labelString:		Abandon
-*compSwitchFollowup.labelString:	Poster à la place
-*compSwitchReply.labelString:	Courrier à la place
-*compSwitchBoth.labelString:	Poster et courrier à la place
-*compSend.labelString:		Envoyer
-*compSave.labelString:		Sauver
-*compIncludeArticle.labelString:	Inclure article
-*compIncludeFile.labelString:	Inclure fichier
+*compAbort.labelString:		Annullare
+*compSwitchFollowup.labelString:	Postare invece
+*compSwitchReply.labelString:	Email invece
+*compSwitchBoth.labelString:	Postare e email invece
+*compSend.labelString:		Inviare
+*compSave.labelString:		Salvare
+*compIncludeArticle.labelString:	Includere articolo
+*compIncludeFile.labelString:	Includere file
 
-XRn_Motif*Cancel*labelString:		Annuler recherche
+XRn_Motif*Cancel*labelString:		Cancellare ricera
 
-*CancelGotoArticle*labelString:	Annuler
+*CancelGotoArticle*labelString:	Cancellare
 
-*CancelListOld*labelString:	Annuler
+*CancelListOld*labelString:	Cancellare
 
-*CancelThreadParent*labelString:	Annuler
+*CancelThreadParent*labelString:	Cancellare
 
 
 XRn_Motif*Information.autoUnmanage:		False
 XRn_Motif*Information*text.width:		500
 XRn_Motif*Information*text.height:		150
-XRn_Motif*Information*cancelLabelString:	Vu 
-XRn_Motif*Information*okLabelString:		Effacer
+XRn_Motif*Information*cancelLabelString:	Veduto
+XRn_Motif*Information*okLabelString:		Eclissare
 
-XRn_Motif*Information*label.labelString:	Information
+XRn_Motif*Information*label.labelString:	Informazioni
 XRn_Motif*Information.saveUnder:			False
 XRn_Motif*Information*text.displayCaret:		False
 XRn_Motif*Information*text.scrollVertical:	True
