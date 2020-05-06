@@ -28,6 +28,7 @@ Widget ButtonBoxCreate(name, parent)
                          XmNorientation, XmHORIZONTAL,
 			 XmNallowResize, True,
 			 XmNskipAdjust, True,
+			 XmNadjustLast, False,
                          /* nothing for motif here, i think - kb
 			 XtNresizeToPreferred, True,
 			 XtNshowGrip, False,

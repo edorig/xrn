@@ -294,16 +294,16 @@ LANG_english*addIgnoreRest.label:	Ignore rest
 LANG_french*addIgnoreRest.label:	Ignore rest
 LANG_german*addIgnoreRest.label:	Rest ignorieren
 LANG_english*addFirst.label:		Add first
-LANG_french*addFirst.label:		Ajouter en tÅÍte
+LANG_french*addFirst.label:		Ajouter en tÍte
 LANG_german*addFirst.label:		Abo, Anfang
 LANG_english*addLast.label:		Add last
 LANG_french*addLast.label:		Ajouter en queue
 LANG_german*addLast.label:		Abo, Ende
 LANG_english*addAfter.label:		Add after group
-LANG_french*addAfter.label:		Ajouter aprÅËs le groupe
+LANG_french*addAfter.label:		Ajouter aprËs le groupe
 LANG_german*addAfter.label:		Abo&plazieren
 LANG_english*addUnsub.label:		Add unsubscribed
-LANG_french*addUnsub.label:		Ajouter non abonnÅÈ
+LANG_french*addUnsub.label:		Ajouter non abonnÈ
 LANG_german*addUnsub.label:		Nicht abonnieren
 LANG_english*addIgnore.label:		Ignore
 LANG_french*addIgnore.label:		Ignore
@@ -317,9 +317,9 @@ LANG_french*ngRead.label:		Lire groupe
 LANG_german*ngRead.label:		NG lesen
 LANG_english*ngNext.label:		Next
 LANG_french*ngNext.label:		Suivant
-LANG_german*ngNext.label:		N\344chste NG
+LANG_german*ngNext.label:		N‰chste NG
 LANG_english*ngPrev.label:		Prev
-LANG_french*ngPrev.label:		PrÅÈcÅÈdent
+LANG_french*ngPrev.label:		PrÈcÈdent
 LANG_german*ngPrev.label:		Vorige NG
 LANG_english*ngCatchUp.label:		Catch up
 LANG_french*ngCatchUp.label:		Rattraper
@@ -328,37 +328,37 @@ LANG_english*ngSubscribe.label:		Subscribe
 LANG_french*ngSubscribe.label:		S'abonner
 LANG_german*ngSubscribe.label:		NG abonnieren
 LANG_english*ngUnsub.label:		Unsubscribe
-LANG_french*ngUnsub.label:		Se dÅÈsabonner
+LANG_french*ngUnsub.label:		Se dÈsabonner
 LANG_german*ngUnsub.label:		NG abbestellen
 LANG_english*ngGoto.label:		Goto group
 LANG_french*ngGoto.label:		Aller au groupe
 LANG_german*ngGoto.label:		Gehe zu NG
 LANG_english*ngListOld.label:		List old
-LANG_french*ngListOld.label:		Groupes abonnÅÈs
+LANG_french*ngListOld.label:		Groupes abonnÈs
 LANG_german*ngListOld.label:		Alle Abos zeigen
 LANG_english*ngAllGroups.label:		All groups
 LANG_french*ngAllGroups.label:		Tous les groupes
 LANG_german*ngAllGroups.label:		Alle NG zeigen
 LANG_english*ngRescan.label:		Rescan
-LANG_french*ngRescan.label:		RafraÅÓchir
+LANG_french*ngRescan.label:		RafraÓchir
 LANG_german*ngRescan.label:		Serverabfrage
 LANG_english*ngGetList.label:		Get newsgroup list
 LANG_french*ngGetList.label:		Get newsgroup list
 LANG_german*ngGetList.label:		Hole NG-Liste
 LANG_english*ngPrevGroup.label:		Prev group
-LANG_french*ngPrevGroup.label:		Groupe prÅÈcÅÈdent
+LANG_french*ngPrevGroup.label:		Groupe prÈcÈdent
 LANG_german*ngPrevGroup.label:		Zuletzt gelesene NG
 LANG_english*ngSelect.label:		Select groups
-LANG_french*ngSelect.label:		SÅÈlectionner groupes
+LANG_french*ngSelect.label:		SÈlectionner groupes
 LANG_german*ngSelect.label:		Vormerken
 LANG_english*ngMove.label:		Move
-LANG_french*ngMove.label:		DÅÈplacer
+LANG_french*ngMove.label:		DÈplacer
 LANG_german*ngMove.label:		Verschieben
 LANG_english*ngExit.label:		Exit
 LANG_french*ngExit.label:		Terminer
 LANG_german*ngExit.label:		Abbrechen
 LANG_english*ngCheckPoint.label:	Checkpoint
-LANG_french*ngCheckPoint.label:		Point de contrÅÙle
+LANG_french*ngCheckPoint.label:		Point de contrÙle
 LANG_german*ngCheckPoint.label:		Liste sichern
 LANG_english*ngPost.label:		Post
 LANG_french*ngPost.label:		Poster
@@ -370,21 +370,21 @@ LANG_english*ngMail.label:		Send Mail
 LANG_french*ngMail.label:		Send Mail
 LANG_german*ngMail.label:		EMail
 LANG_english*ngGripe.label:		Gripe
-LANG_french*ngGripe.label:		RÅ‚ler
+LANG_french*ngGripe.label:		R‚ler
 LANG_german*ngGripe.label:		XRN-Betreuer
 LANG_english*ngScroll.label:		Scroll forward
 LANG_french*ngScroll.label:		Ascenseur avant
 LANG_german*ngScroll.label:		Seite vorw.
 LANG_english*ngScrollBack.label:	Scroll backward
-LANG_french*ngScrollBack.label:		Ascenseur arriÅËre
-LANG_german*ngScrollBack.label:		Seite zur\374ck
+LANG_french*ngScrollBack.label:		Ascenseur arriËre
+LANG_german*ngScrollBack.label:		Seite zur¸ck
 
 LANG_english*allQuit.label:		Quit
 LANG_french*allQuit.label:		Quitter
 LANG_german*allQuit.label:		Auswahl beenden
 LANG_english*allNext.label:		Next
 LANG_french*allNext.label:		Next
-LANG_german*allNext.label:		N\344chste NG
+LANG_german*allNext.label:		N‰chste NG
 LANG_english*allPrev.label:		Prev
 LANG_french*allPrev.label:		Prev
 LANG_german*allPrev.label:		Vorige NG
@@ -392,16 +392,16 @@ LANG_english*allSub.label:		Subscribe
 LANG_french*allSub.label:		S'abonner
 LANG_german*allSub.label:		NG abonnieren
 LANG_english*allFirst.label:		Subscribe first
-LANG_french*allFirst.label:		S'abonner en tÅÍte
+LANG_french*allFirst.label:		S'abonner en tÍte
 LANG_german*allFirst.label:		Abo,  Anfang
 LANG_english*allLast.label:		Subscribe last
 LANG_french*allLast.label:		S'abonner en queue
 LANG_german*allLast.label:		Abo,  Ende
 LANG_english*allAfter.label:		Subscribe after group
-LANG_french*allAfter.label:		S'abonner aprÅËs un groupe
+LANG_french*allAfter.label:		S'abonner aprËs un groupe
 LANG_german*allAfter.label:		Abo&plazieren
 LANG_english*allUnsub.label:		Unsubscribe
-LANG_french*allUnsub.label:		Se dÅÈsabonner
+LANG_french*allUnsub.label:		Se dÈsabonner
 LANG_german*allUnsub.label:		NG abbestellen
 LANG_english*allIgnore.label:		Ignore
 LANG_french*allIgnore.label:		Ignore
@@ -410,10 +410,10 @@ LANG_english*allGoto.label:		Goto group
 LANG_french*allGoto.label:		Aller au groupe
 LANG_german*allGoto.label:		Gehe zu NG
 LANG_english*allSelect.label:		Select groups
-LANG_french*allSelect.label:		SÅÈlectionner groupes
+LANG_french*allSelect.label:		SÈlectionner groupes
 LANG_german*allSelect.label:		Vormerken
 LANG_english*allMove.label:		Move
-LANG_french*allMove.label:		DÅÈplacer
+LANG_french*allMove.label:		DÈplacer
 LANG_german*allMove.label:		Verschieben
 LANG_english*allToggle.label:		Toggle order
 LANG_french*allToggle.label:		Changer l'ordre
@@ -422,8 +422,8 @@ LANG_english*allScroll.label:		Scroll forward
 LANG_french*allScroll.label:		Ascenseur avant
 LANG_german*allScroll.label:		Seite vorw.
 LANG_english*allScrollBack.label:	Scroll backward
-LANG_french*allScrollBack.label:	Ascenseur arriÅËre
-LANG_german*allScrollBack.label:	Seite zur\374ck
+LANG_french*allScrollBack.label:	Ascenseur arriËre
+LANG_german*allScrollBack.label:	Seite zur¸ck
 LANG_english*allSearch.label:		Search
 LANG_french*allSearch.label:		Search
 LANG_german*allSearch.label:		Suchen
@@ -445,61 +445,61 @@ LANG_french*artQuit.label:		Quitter
 LANG_german*artQuit.label:		NG verlassen
 LANG_english*artNext.label:		Next
 LANG_french*artNext.label:		Suivant
-LANG_german*artNext.label:		N\344chster Art.
+LANG_german*artNext.label:		N‰chster Art.
 LANG_english*artCurrent.label:		Current
 LANG_french*artCurrent.label:		Current
-LANG_german*artCurrent.label:		Gew\344hlter Art.
+LANG_german*artCurrent.label:		Gew‰hlter Art.
 LANG_english*artUp.label:		Up index line
 LANG_french*artUp.label:		Up index line
 LANG_german*artUp.label:		Vorige Indexzeile
 LANG_english*artDown.label:		Down index line
 LANG_french*artDown.label:		Down index line
-LANG_german*artDown.label:		N\344chste Indexzeile
+LANG_german*artDown.label:		N‰chste Indexzeile
 LANG_english*artScroll.label:		Scroll forward
 LANG_french*artScroll.label:		Ascenseur avant
 LANG_german*artScroll.label:		Seite vorw.
 LANG_english*artScrollBack.label:	Scroll backward
-LANG_french*artScrollBack.label:	Ascenseur arriÅËre
-LANG_german*artScrollBack.label:	Seite zur\374ck
+LANG_french*artScrollBack.label:	Ascenseur arriËre
+LANG_german*artScrollBack.label:	Seite zur¸ck
 LANG_english*artScrollLine.label:	Scroll line forward
 LANG_french*artScrollLine.label:	Avancer d'une ligne
 LANG_german*artScrollLine.label:	Zeile vorw.
 LANG_english*artScrollBackLine.label:	Scroll line backward
 LANG_french*artScrollBackLine.label:	Reculer d'une ligne
-LANG_german*artScrollBackLine.label:	Zeile zur\374ck
+LANG_german*artScrollBackLine.label:	Zeile zur¸ck
 LANG_english*artScrollEnd.label:	Scroll to end
 LANG_french*artScrollEnd.label:		Fin de liste
 LANG_german*artScrollEnd.label:		Zum Ende
 LANG_english*artScrollBeginning.label:	Scroll to beginning
-LANG_french*artScrollBeginning.label:	DÅÈbut de liste
+LANG_french*artScrollBeginning.label:	DÈbut de liste
 LANG_german*artScrollBeginning.label:	Zum Anfang
 LANG_english*artScrollIndex.label:	Scroll index
 LANG_french*artScrollIndex.label:	En avant vers l'index
 LANG_german*artScrollIndex.label:	Indexseite vorw.
 LANG_english*artScrollIndexBack.label:	Scroll index backward
-LANG_french*artScrollIndexBack.label:	En arriÅËre vers l'index
-LANG_german*artScrollIndexBack.label:	Indexseite zur\374ck
+LANG_french*artScrollIndexBack.label:	En arriËre vers l'index
+LANG_german*artScrollIndexBack.label:	Indexseite zur¸ck
 LANG_english*artNextUnread.label:	Next unread
 LANG_french*artNextUnread.label:	Suivant non lu
-LANG_german*artNextUnread.label:	N\344chster ungelesener Art.
+LANG_german*artNextUnread.label:	N‰chster ungelesener Art.
 LANG_english*artPrev.label:		Prev
-LANG_french*artPrev.label:		PrÅÈcÅÈdent
+LANG_french*artPrev.label:		PrÈcÈdent
 LANG_german*artPrev.label:		Voriger Art.
 LANG_english*artLast.label:		Last
 LANG_french*artLast.label:		Dernier
 LANG_german*artLast.label:		Zuetzt gelesener Art.
 LANG_english*artNextGroup.label:	Next group
 LANG_french*artNextGroup.label:		Groupe suivant
-LANG_german*artNextGroup.label:		N\344chste NG
+LANG_german*artNextGroup.label:		N‰chste NG
 LANG_english*artGotoArticle.label:	Goto article
-LANG_french*artGotoArticle.label:	Aller Å‡ l'article
+LANG_french*artGotoArticle.label:	Aller ‡ l'article
 LANG_german*artGotoArticle.label:	Gehe zu Art.
 LANG_english*artCatchUp.label:		Catch up
 LANG_french*artCatchUp.label:		Rattraper
 LANG_german*artCatchUp.label:		NG bis Art. gelesen
 LANG_english*artFedUp.label:		Fed up
 LANG_french*artFedUp.label:		Consommer
-LANG_german*artFedUp.label:		NG gelesen, zur n\344chsten
+LANG_german*artFedUp.label:		NG gelesen, zur n‰chsten
 LANG_english*artMarkRead.label:		Mark read
 LANG_french*artMarkRead.label:		Marquer lu
 LANG_german*artMarkRead.label:		Art.`gelesen'
@@ -507,7 +507,7 @@ LANG_english*artMarkUnread.label:	Mark unread
 LANG_french*artMarkUnread.label:	Marquer non lu
 LANG_german*artMarkUnread.label:	Art.`ungelesen'
 LANG_english*artUnsub.label:		Unsubscribe
-LANG_french*artUnsub.label:		Se dÅÈsabonner
+LANG_french*artUnsub.label:		Se dÈsabonner
 LANG_german*artUnsub.label:		NG abbestellen
 LANG_english*artSub.label:		Subscribe
 LANG_french*artSub.label:		Subscribe
@@ -516,11 +516,11 @@ LANG_english*artSubNext.label:		Subject next
 LANG_french*artSubNext.label:		Suivant du sujet
 LANG_german*artSubNext.label:		Suche vorw.
 LANG_english*artSubPrev.label:		Subject prev
-LANG_french*artSubPrev.label:		PrÅÈcÅÈdent du sujet
-LANG_german*artSubPrev.label:		Suche zur\374ck
+LANG_french*artSubPrev.label:		PrÈcÈdent du sujet
+LANG_german*artSubPrev.label:		Suche zur¸ck
 LANG_english*artThreadParent.label:	Goto parent
 LANG_french*artThreadParent.label:	Goto parent
-LANG_german*artThreadParent.label:	Zum Vorg\344nger
+LANG_german*artThreadParent.label:	Zum Vorg‰nger
 LANG_english*artKillSubject.label:	Subject kill
 LANG_french*artKillSubject.label:	Subject kill
 LANG_german*artKillSubject.label:	Thema ausblenden
@@ -552,7 +552,7 @@ LANG_english*artExit.label:		Exit
 LANG_french*artExit.label:		Terminer
 LANG_german*artExit.label:		Abbrechen
 LANG_english*artGripe.label:		Gripe
-LANG_french*artGripe.label:		RÅ‚ler
+LANG_french*artGripe.label:		R‚ler
 LANG_german*artGripe.label:		XRN-Betreuer
 LANG_english*artListOld.label:		List old
 LANG_french*artListOld.label:		Tous les articles
@@ -561,14 +561,14 @@ LANG_english*artResort.label:		Resort list
 LANG_french*artResort.label:		Resort list
 LANG_german*artResort.label:		Liste neu sortieren
 LANG_english*artCheckPoint.label:	Checkpoint
-LANG_french*artCheckPoint.label:	Point de contrÅÙle
+LANG_french*artCheckPoint.label:	Point de contrÙle
 LANG_german*artCheckPoint.label:	Liste sichern
 
 LANG_english*artSave.label:		Save
 LANG_french*artSave.label:		Sauver
 LANG_german*artSave.label:		Art. speichern
 LANG_english*artReply.label:		Reply
-LANG_french*artReply.label:		RÅÈpondre
+LANG_french*artReply.label:		RÈpondre
 LANG_german*artReply.label:		Antwort EMail
 LANG_english*artForward.label:		Forward
 LANG_french*artForward.label:		Faire suivre
@@ -577,11 +577,11 @@ LANG_english*artFollowup.label:		Followup
 LANG_french*artFollowup.label:		Poursuivre
 LANG_german*artFollowup.label:		Folgeartikel
 LANG_english*artFollowupAndReply.label:	Followup & Reply
-LANG_french*artFollowupAndReply.label:	Poursuivre & rÅÈpondre
+LANG_french*artFollowupAndReply.label:	Poursuivre & rÈpondre
 LANG_german*artFollowupAndReply.label:	Folgeart.&EMail
 LANG_english*artCancel.label:		Cancel
 LANG_french*artCancel.label:		Annuler
-LANG_german*artCancel.label:		Art. zur\374ckziehen
+LANG_german*artCancel.label:		Art. zur¸ckziehen
 LANG_english*artXlate.label:		Translate
 LANG_french*artXlate.label:		Traduire
 LANG_german*artXlate.label:		Zeichensatz anpassen
@@ -589,7 +589,7 @@ LANG_english*artRot13.label:		Rot-13
 LANG_french*artRot13.label:		Rot-13
 LANG_german*artRot13.label:		Rot-13
 LANG_english*artHeader.label:		Toggle header
-LANG_french*artHeader.label:		En-tÅÍte
+LANG_french*artHeader.label:		En-tÍte
 LANG_german*artHeader.label:		Kopf ein/ausblenden
 LANG_english*artPrint.label:		Print
 LANG_french*artPrint.label:		Imprimer
@@ -615,10 +615,10 @@ LANG_french*compSave.label:		Sauver
 LANG_german*compSave.label:		Sichern
 LANG_english*compIncludeArticle.label:	include article
 LANG_french*compIncludeArticle.label:	Inclure article
-LANG_german*compIncludeArticle.label:	Art. einf\374gen
+LANG_german*compIncludeArticle.label:	Art. einf¸gen
 LANG_english*compIncludeFile.label:	include file
 LANG_french*compIncludeFile.label:	Inclure fichier
-LANG_german*compIncludeFile.label:	Datei einf\374gen
+LANG_german*compIncludeFile.label:	Datei einf¸gen
 
 LANG_english*Cancel*label:		Cancel Search
 LANG_french*Cancel*label:		Annuler recherche
@@ -645,20 +645,20 @@ XAW	<Key>Linefeed: set() notify() unset() \n\
 XAW	<Key>Return: set() notify() unset()
 XAWLANG_english*Information*mesgDismiss*label:	Dismiss
 XAWLANG_french*Information*mesgDismiss*label:	Supprimer
-XAWLANG_german*Information*mesgDismiss*label:	Schlie\337en
+XAWLANG_german*Information*mesgDismiss*label:	Schlieﬂen
 XAWLANG_english*Information*mesgClear*label:	Clear
 XAWLANG_french*Information*mesgClear*label:	Effacer
-XAWLANG_german*Information*mesgClear*label:	L\366schen
+XAWLANG_german*Information*mesgClear*label:	Lˆschen
 
 MOTIF*Information.autoUnmanage:		False
 MOTIF*Information*text.width:		500
 MOTIF*Information*text.height:		150
 MOTIFLANG_english*Information*cancelLabelString:	Dismiss
 MOTIFLANG_french*Information*cancelLabelString:		Supprimer
-MOTIFLANG_german*Information*cancelLabelString:		Schlie\337en
+MOTIFLANG_german*Information*cancelLabelString:		Schlieﬂen
 MOTIFLANG_english*Information*okLabelString:		Clear
 MOTIFLANG_french*Information*okLabelString:		Effacer
-MOTIFLANG_german*Information*okLabelString:		L\366schen
+MOTIFLANG_german*Information*okLabelString:		Lˆschen
 
 LANG_english*Information*label.label:	Information
 LANG_french*Information*label.label:	Information

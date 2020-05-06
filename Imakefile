@@ -56,10 +56,10 @@ APPDEFAULTS = XRn
  * What language do you want messages to be in?  Legal values are
  * "english", "german", and "french"; case is significant!
  */
-/* LANGUAGE= english */   
+LANGUAGE= english   
 /* LANGUAGE= german */
 /* Et nous fetons le Brexit */ 
-LANGUAGE= french   
+/* LANGUAGE= french */    
 
 /* Nous sommes sur Linux */
 #define LINUX_DIST 1
