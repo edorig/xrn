@@ -1037,7 +1037,7 @@ void TextSearchInteractive(w, e, start, direction, initial)
 
   if (start > 0)
     TextSetInsertionPoint(w, start);
-
+  /* This works only with an Xaw Widget, there are not search actions in XmText(3) widgets */ 
   XtCallActionProc(w, "search", e, params, num_params);
 }
 
